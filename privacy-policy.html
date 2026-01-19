@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy | JSON Validator</title>
+  <meta name="description" content="Privacy Policy for the JSON Validator website." />
+
+  <!-- AdSense script already included globally -->
+
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#121a33; --panel-2:#0f1630;
+      --text:#e9eefc; --muted:#b7c3ff; --border:rgba(255,255,255,.12);
+      --shadow:0 18px 50px rgba(0,0,0,.35); --radius:16px;
+      --sans:system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0; min-height:100vh; font-family:var(--sans); color:var(--text);
+      background:radial-gradient(1200px 500px at 20% 10%, rgba(109,83,255,.22), transparent 60%), var(--bg);
+    }
+    a{color:#00d0ff;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 16px;background:rgba(11,16,32,.7);
+      border-bottom:1px solid var(--border);backdrop-filter:blur(10px);
+    }
+    .menuBtn{
+      width:42px;height:42px;border-radius:12px;
+      border:1px solid var(--border);background:rgba(255,255,255,.04);
+      color:var(--text);cursor:pointer;
+    }
+
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;}
+    .overlay.open{opacity:1;pointer-events:auto;}
+
+    .sidebar{
+      position:fixed;top:0;left:0;height:100%;width:280px;
+      background:linear-gradient(180deg, rgba(18,26,51,.98), rgba(15,22,48,.98));
+      border-right:1px solid var(--border);padding:14px;
+      transform:translateX(-105%);transition:.25s;z-index:20;
+    }
+    .sidebar.open{transform:translateX(0);}
+    .nav a{
+      display:block;padding:10px 12px;margin-bottom:8px;
+      border-radius:12px;border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.03);color:var(--text);font-weight:600;
+    }
+    .nav a[aria-current="page"]{
+      background:rgba(0,208,255,.12);border-color:rgba(0,208,255,.4);
+    }
+
+    .wrap{max-width:900px;margin:0 auto;padding:26px 16px;}
+    h1{font-size:32px;margin-bottom:12px;}
+    h2{margin-top:26px;}
+    p,ul{color:var(--muted);line-height:1.7;}
+    .card{
+      margin-top:24px;padding:18px;border-radius:var(--radius);
+      border:1px solid var(--border);background:rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+    }
+  </style>
+</head>
+
+<body>
+<div id="overlay" class="overlay"></div>
+
+<aside id="sidebar" class="sidebar">
+  <nav class="nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="what-is-json.html">📘 What is JSON?</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="privacy-policy.html" aria-current="page">🔐 Privacy Policy</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <button id="openSidebar" class="menuBtn">☰</button>
+  <strong>JSON Validator</strong>
+  <span></span>
+</div>
+
+<div class="wrap">
+  <h1>Privacy Policy</h1>
+
+  <p>
+    This Privacy Policy describes how information is handled when you use the
+    <strong>JSON Validator</strong> website.
+  </p>
+
+  <h2>Information Collection</h2>
+  <p>
+    This website does not collect, store, or transmit personal data entered into
+    the JSON Validator. All JSON processing happens locally in your browser.
+  </p>
+
+  <h2>Cookies and Advertising</h2>
+  <p>
+    This website uses <strong>Google AdSense</strong>, a service provided by Google Inc.,
+    to display advertisements.
+  </p>
+  <ul>
+    <li>Google uses cookies to serve ads based on users’ visits to this and other websites.</li>
+    <li>Google’s use of advertising cookies enables it and its partners to serve ads to users.</li>
+    <li>Users may opt out of personalized advertising by visiting Google Ads Settings.</li>
+  </ul>
+
+  <p>
+    Learn more about how Google manages data in advertising products:
+    <br />
+    <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">
+      https://policies.google.com/technologies/ads
+    </a>
+  </p>
+
+  <h2>Third-Party Services</h2>
+  <p>
+    Third-party ad servers or networks may use technologies like cookies or JavaScript
+    to measure the effectiveness of their advertisements.
+  </p>
+
+  <h2>Consent</h2>
+  <p>
+    By using this website, you hereby consent to this Privacy Policy and agree to its terms.
+  </p>
+
+  <div class="card">
+    If you have questions about this Privacy Policy, please contact us via the
+    <a href="about.html">About page</a>.
+  </div>
+</div>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  document.getElementById("openSidebar").onclick = ()=>{
+    sidebar.classList.add("open"); overlay.classList.add("open");
+  };
+  overlay.onclick = ()=>{ sidebar.classList.remove("open"); overlay.classList.remove("open"); };
+</script>
+</body>
+</html>
