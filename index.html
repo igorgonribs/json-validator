@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JSON Validator — Free & Secure (Local)</title>
+  <meta name="description" content="Validate, format and minify JSON directly in your browser. Your data never leaves your device." />
+
+  <!-- AdSense: you already added this in <head> -->
+  <!--
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_CA_PUB_ID"
+    crossorigin="anonymous"></script>
+  -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Sidebar + overlay -->
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+
+  <aside id="sidebar" class="sidebar" aria-label="Site menu" aria-hidden="true">
+    <div class="sidebarHeader">
+      <strong>Menu</strong>
+      <button id="closeSidebar" class="closeBtn" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html" aria-current="page">🏠 Home (Validator)</a>
+      <a href="what-is-json.html">📘 What is JSON?</a>
+    </nav>
+
+    <div class="sidebarNote">
+      Shortcuts: <b>Ctrl/⌘ + Enter</b> validate • <b>Ctrl/⌘ + B</b> format • <b>Ctrl/⌘ + M</b> minify
+    </div>
+  </aside>
+
+  <!-- Top bar -->
+  <div class="topbar" role="banner">
+    <button id="openSidebar" class="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      ☰
+    </button>
+
+    <div class="brand">
+      <div>
+        <h1>JSON Validator</h1>
+        <small>Validate • Format • Minify (Local)</small>
+      </div>
+    </div>
+
+    <div class="pill" aria-label="Local processing">
+      <span class="dot" aria-hidden="true"></span>
+      Local processing
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="subtitle">
+      Validate, format and minify JSON <strong>directly in your browser</strong>. Your data is <strong>never sent</strong> to a server.
+    </p>
+
+    <main class="card" role="region" aria-label="Editor and tools">
+      <div class="toolbar">
+        <div class="btns">
+          <button class="action primary" id="btnValidate" type="button">Validate</button>
+          <button class="action" id="btnFormat" type="button">Format</button>
+          <button class="action" id="btnMinify" type="button">Minify</button>
+          <button class="action ghost" id="btnCopy" type="button">Copy</button>
+          <button class="action ghost" id="btnSample" type="button" title="Insert a valid sample JSON">Sample</button>
+          <button class="action danger" id="btnClear" type="button">Clear</button>
+        </div>
+
+        <div class="stats" aria-label="Content stats">
+          <span class="statPill" id="statChars">0 characters</span>
+          <span class="statPill" id="statLines">0 lines</span>
+        </div>
+      </div>
+
+      <textarea
+        id="jsonInput"
+        class="editor"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        autocorrect="off"
+        placeholder='Paste your JSON here. Example: {"name":"John Snow","ok":true}'
+        aria-label="JSON input"></textarea>
+
+      <div class="status" aria-live="polite" aria-atomic="true">
+        <div class="msg" id="statusMsg">
+          <span class="icon warn" aria-hidden="true"></span>
+          <div>
+            <strong>Ready.</strong>
+            <p>Paste JSON and click <b>Validate</b>.</p>
+          </div>
+        </div>
+
+        <div class="hint">
+          Shortcuts: <b>Ctrl/⌘ + Enter</b> validate • <b>Ctrl/⌘ + B</b> format • <b>Ctrl/⌘ + M</b> minify.
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Tip: Add more tools later (JSON → XML, CSV → JSON), and link them from the same sidebar menu.
+    </footer>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+
+    // Sidebar elements
+    const sidebar = el("sidebar");
+    const overlay = el("overlay");
+    const openSidebarBtn = el("openSidebar");
+    const closeSidebarBtn = el("closeSidebar");
+
+    function openSidebar(){
+      sidebar.classList.add("open");
+      overlay.classList.add("open");
+      sidebar.setAttribute("aria-hidden","false");
+      overlay.setAttribute("aria-hidden","false");
+      openSidebarBtn.setAttribute("aria-expanded","true");
+    }
+
+    function closeSidebar(){
+      sidebar.classList.remove("open");
+      overlay.classList.remove("open");
+      sidebar.setAttribute("aria-hidden","true");
+      overlay.setAttribute("aria-hidden","true");
+      openSidebarBtn.setAttribute("aria-expanded","false");
+    }
+
+    openSidebarBtn.addEventListener("click", openSidebar);
+    closeSidebarBtn.addEventListener("click", closeSidebar);
+    overlay.addEventListener("click", closeSidebar);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSidebar();
+    });
+
+    // Validator elements
+    const input = el("jsonInput");
+    const btnValidate = el("btnValidate");
+    const btnFormat = el("btnFormat");
+    const btnMinify = el("btnMinify");
+    const btnCopy = el("btnCopy");
+    const btnClear = el("btnClear");
+    const btnSample = el("btnSample");
+
+    const statChars = el("statChars");
+    const statLines = el("statLines");
+    const statusMsg = el("statusMsg");
+
+    function setStatus(type, title, message) {
+      const iconClass = type === "good" ? "good" : type === "bad" ? "bad" : "warn";
+      statusMsg.innerHTML = `
+        <span class="icon ${iconClass}" aria-hidden="true"></span>
+        <div>
+          <strong>${escapeHtml(title)}</strong>
+          <p>${escapeHtml(message)}</p>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function updateStats() {
+      const text = input.value || "";
+      statChars.textContent = `${text.length} characters`;
+      const lines = text.length ? (text.match(/\n/g)?.length ?? 0) + 1 : 0;
+      statLines.textContent = `${lines} lines`;
+    }
+
+    function tryParseJson(text) {
+      const clean = text.replace(/^\uFEFF/, "").trim();
+      if (!clean) {
+        return { ok: false, error: new Error("Empty input. Paste JSON to validate.") };
+      }
+      try {
+        const value = JSON.parse(clean);
+        return { ok: true, value, clean };
+      } catch (err) {
+        return { ok: false, error: err, clean };
+      }
+    }
+
+    function extractErrorPosition(err) {
+      const msg = String(err && err.message ? err.message : "");
+      // Chrome/Edge/Node: "... at position 12"
+      let m = msg.match(/position\s+(\d+)/i);
+      if (m) return Number(m[1]);
+
+      // Firefox: "... at line 1 column 2 ..."
+      m = msg.match(/line\s+(\d+)\s+column\s+(\d+)/i);
+      if (m) return { line: Number(m[1]), col: Number(m[2]) };
+
+      return null;
+    }
+
+    function posToLineCol(text, pos) {
+      const upto = text.slice(0, Math.max(0, pos));
+      const lines = upto.split("\n");
+      const line = lines.length;
+      const col = lines[lines.length - 1].length + 1;
+      return { line, col };
+    }
+
+    function selectLine(lineNumber) {
+      const text = input.value;
+      const lines = text.split("\n");
+      const ln = Math.min(Math.max(1, lineNumber), lines.length);
+      let start = 0;
+      for (let i = 1; i < ln; i++) start += lines[i - 1].length + 1;
+      const end = start + lines[ln - 1].length;
+      input.focus();
+      input.setSelectionRange(start, end);
+    }
+
+    function validate() {
+      const raw = input.value;
+      const { ok, value, error, clean } = tryParseJson(raw);
+
+      if (ok) {
+        const type = Array.isArray(value) ? "array" : (value === null ? "null" : typeof value);
+        setStatus("good", "Valid JSON ✅", `Root type: ${type}.`);
+        return true;
+      }
+
+      const posInfo = extractErrorPosition(error);
+
+      if (posInfo && typeof posInfo === "object" && "line" in posInfo) {
+        setStatus("bad", "Invalid JSON ❌", `${error.message} (line ${posInfo.line}, column ${posInfo.col})`);
+        selectLine(posInfo.line);
+        return false;
+      }
+
+      if (typeof posInfo === "number") {
+        const lc = posToLineCol(clean, posInfo);
+        setStatus("bad", "Invalid JSON ❌", `${error.message} (line ${lc.line}, column ${lc.col})`);
+        selectLine(lc.line);
+        return false;
+      }
+
+      setStatus("bad", "Invalid JSON ❌", error.message || "Failed to validate JSON.");
+      return false;
+    }
+
+    function formatJson() {
+      const raw = input.value;
+      const { ok, value } = tryParseJson(raw);
+      if (!ok) { validate(); return; }
+      input.value = JSON.stringify(value, null, 2);
+      updateStats();
+      setStatus("good", "Formatted ✅", "Pretty-printed with 2-space indentation.");
+    }
+
+    function minifyJson() {
+      const raw = input.value;
+      const { ok, value } = tryParseJson(raw);
+      if (!ok) { validate(); return; }
+      input.value = JSON.stringify(value);
+      updateStats();
+      setStatus("good", "Minified ✅", "All whitespace removed.");
+    }
+
+    async function copyToClipboard() {
+      const text = input.value;
+      if (!text.trim()) {
+        setStatus("warn", "Nothing to copy.", "Paste or generate JSON before copying.");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        setStatus("good", "Copied ✅", "Copied to clipboard.");
+      } catch {
+        input.focus();
+        input.select();
+        const ok = document.execCommand("copy");
+        setStatus(ok ? "good" : "bad",
+          ok ? "Copied ✅" : "Copy failed ❌",
+          ok ? "Copied to clipboard." : "Your browser blocked automatic copy."
+        );
+      }
+    }
+
+    function clearAll() {
+      input.value = "";
+      updateStats();
+      setStatus("warn", "Cleared.", "Paste JSON and click Validate.");
+      input.focus();
+    }
+
+    function insertSample() {
+      input.value = JSON.stringify({
+        user: "John Snow",
+        knows: { what: "nothing", amount: 0 },
+        tools: ["validator", "formatter"],
+        active: true
+      }, null, 2);
+      updateStats();
+      setStatus("warn", "Sample inserted.", "Try validating, formatting, or minifying.");
+      input.focus();
+    }
+
+    // Events
+    input.addEventListener("input", updateStats);
+
+    btnValidate.addEventListener("click", validate);
+    btnFormat.addEventListener("click", formatJson);
+    btnMinify.addEventListener("click", minifyJson);
+    btnCopy.addEventListener("click", copyToClipboard);
+    btnClear.addEventListener("click", clearAll);
+    btnSample.addEventListener("click", insertSample);
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+      const isCmd = e.metaKey || e.ctrlKey;
+      if (!isCmd) return;
+
+      const key = e.key.toLowerCase();
+      if (key === "enter") { e.preventDefault(); validate(); }
+      if (key === "b") { e.preventDefault(); formatJson(); }
+      if (key === "m") { e.preventDefault(); minifyJson(); }
+    });
+
+    // Init
+    updateStats();
+  </script>
+</body>
+</html>
