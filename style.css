@@ -541,3 +541,13 @@ button.action:active {
   box-shadow: 0 0 0 4px rgba(255, 191, 71, .18), 0 0 18px rgba(255, 191, 71, .20);
 }
 
+.brand-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-icon{
+  width:32px;
+  height:32px;
+}
