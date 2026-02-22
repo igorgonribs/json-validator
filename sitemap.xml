@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://json-validator-eta.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://json-validator-eta.vercel.app/what-is-json.html</loc>
+  </url>
+
+  <url>
+    <loc>https://json-validator-eta.vercel.app/common-json-errors.html</loc>
+  </url>
+
+  <url>
+    <loc>https://json-validator-eta.vercel.app/json-best-practices.html</loc>
+  </url>
+
+  <url>
+    <loc>https://json-validator-eta.vercel.app/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://json-validator-eta.vercel.app/privacy-policy.html</loc>
+  </url>
+
+</urlset>
