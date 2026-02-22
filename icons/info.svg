@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16">
+  
+  <!-- left door -->
+  <rect x="6" y="1" width="2" height="2" fill="#00d0ff"/>
+  <rect x="6" y="4" width="2" height="12" fill="#00d0ff"/>
+
+
+  <!-- right door -->
+  <rect x="8" y="1" width="2" height="2" fill="#8a5cff"/>
+  <rect x="8" y="4" width="2" height="12" fill="#8a5cff"/>
+
+</svg>

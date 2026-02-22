@@ -9,7 +9,7 @@
   --bad: #ff4d6d;
   --warn: #ffbf47;
   --shadow: 0 18px 50px rgba(0, 0, 0, .35);
-  --radius: 6px;
+  --radius: 0px;
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
@@ -97,7 +97,7 @@ a:hover {
   align-items: center;
   gap: 10px;
   padding: 11px 12px;
-  border-radius: 4px;
+  border-radius: 0px;
   text-decoration: none;
   color: var(--text);
   border: 1px solid rgba(255, 255, 255, .10);
@@ -138,6 +138,11 @@ a:hover {
   padding: 22px 18px 30px;
 }
 
+.not-wrap {
+  margin: 0 auto;
+  padding: 22px 18px 30px;
+}
+
 .subtitle {
   margin: 10px 0 18px;
   text-align: center;
@@ -149,7 +154,7 @@ a:hover {
 .card {
   margin-top: 24px;
   padding: 18px;
-  border-radius: 4px;
+  border-radius: 0px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, .03);
   box-shadow: var(--shadow);
@@ -186,10 +191,10 @@ button.action {
   background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
   color: var(--text);
   padding: 10px 12px;
-  border-radius: 4px;
+  border-radius: 0px;
   cursor: pointer;
-  font-weight: 650;
-  font-size: 13.5px;
+  font-weight: 300;
+  font-size: 12px;
   transition: transform .06s ease, background .15s ease, border-color .15s ease;
   user-select: none;
 }
@@ -245,7 +250,7 @@ button.action:focus {
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, .03);
   padding: 8px 10px;
-  border-radius: 4px;
+  border-radius: 0px;
   white-space: nowrap;
 }
 
@@ -541,13 +546,67 @@ button.action:active {
   box-shadow: 0 0 0 4px rgba(255, 191, 71, .18), 0 0 18px rgba(255, 191, 71, .20);
 }
 
-.brand-title{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.brand-icon{
-  width:32px;
-  height:32px;
+.brand-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.text-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.site-footer {
+  margin-top: 60px;
+  width: 100%;
+  border-top: 2px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .02);
+}
+
+.footer-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text);
+  opacity: .8;
+  transition: .2s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: #00d0ff;
 }

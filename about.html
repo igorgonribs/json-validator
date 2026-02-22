@@ -9,17 +9,36 @@
   <title>About | JSON Validator</title>
   <meta name="description" content="About the JSON Validator website and contact information." />
   <link rel="stylesheet" href="style.css" />
-    <style>
+  <style>
+    a {
+      color: #00d0ff;
+      text-decoration: none;
+    }
 
-    a{color:#00d0ff;text-decoration:none;}
-    a:hover{text-decoration:underline;}
+    a:hover {
+      text-decoration: underline;
+    }
 
 
-    .wrap{max-width:900px;margin:0 auto;padding:26px 16px;}
-    h1{font-size:32px;margin-bottom:12px;}
-    h2{margin: 0px;}
-    p{color:var(--muted);line-height:1.7;}
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 26px 16px;
+    }
 
+    h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
   </style>
 </head>
 
@@ -33,46 +52,71 @@
         </div>
         <small>Tools & guides</small>
       </div>
-
       <nav class="nav">
-        <a href="index.html">🏠 Home</a>
-        <a href="what-is-json.html">📘 What is JSON?</a>
-        <a href="common-json-errors.html">⚠️ Common JSON Errors</a>
-        <a href="json-best-practices.html">✅ Best Practices</a>
-        <a href="about.html" aria-current="page">ℹ️ About</a>
-        <a href="privacy-policy.html">🔐 Privacy Policy</a>
+        <a href="index.html">
+          <img src="icons/home.svg" alt="" class="menu-icon">
+          Home
+        </a>
+        <a href="what-is-json.html">
+          <img src="icons/question.svg" alt="" class="menu-icon">
+          What is JSON?
+        </a>
+        <a href="common-json-errors.html">
+          <img src="icons/error.svg" alt="" class="menu-icon">
+          Common JSON Errors
+        </a>
+        <a href="json-best-practices.html">
+          <img src="icons/good.svg" alt="" class="menu-icon">
+          Best Practices
+        </a>
       </nav>
-
       <div class="sidebarNote">
         Tip: All processing is local in your browser.
       </div>
     </aside>
 
-    <div class="wrap">
-      <h1>About This Website</h1>
+    <div class="main">
+      <div class="wrap">
+        <h1>About This Website</h1>
 
-      <p>
-        <strong>JSON Validator</strong> is a free online tool designed to help developers,
-        students, and data professionals validate, format, and minify JSON files
-        directly in their browser.
-      </p>
-
-      <p>
-        The main goal of this website is to provide a simple, fast, and privacy-friendly
-        utility without requiring account creation or server-side processing.
-      </p>
-
-      <div class="card">
-        <h2>Contact</h2>
         <p>
-          If you have questions, suggestions, or feedback, feel free to contact:
+          <strong>JSON Validator</strong> is a free online tool designed to help developers,
+          students, and data professionals validate, format, and minify JSON files
+          directly in their browser.
         </p>
+
         <p>
-          📧 <strong>devigrs96@gmail.com</strong>
+          The main goal of this website is to provide a simple, fast, and privacy-friendly
+          utility without requiring account creation or server-side processing.
         </p>
+
+        <div class="card">
+          <h2>Contact</h2>
+          <p>
+            If you have questions, suggestions, or feedback, feel free to contact:
+          </p>
+          <p>
+            📧 <strong>devigrs96@gmail.com</strong>
+          </p>
+        </div>
       </div>
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <strong>JSON Validator</strong>
+            <span>© 2025 All rights reserved.</span>
+          </div>
+
+          <nav class="footer-links">
+            <a href="about.html">About</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </footer>
     </div>
 
+
+  </div>
 
 </body>
 

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16">
+  
+
+  <!-- left roof -->
+
+  <rect x="0" y="8" width="2" height="1" fill="#00d0ff"/>
+  <rect x="1" y="9" width="2" height="1" fill="#00d0ff"/>
+  <rect x="2" y="10" width="2" height="1" fill="#00d0ff"/>
+  <rect x="3" y="11" width="2" height="1" fill="#00d0ff"/>
+  <rect x="4" y="12" width="2" height="1" fill="#00d0ff"/>
+  <rect x="5" y="13" width="1" height="1" fill="#00d0ff"/>
+
+
+
+  <!-- right roof -->
+
+
+  <rect x="13" y="05" width="2" height="1" fill="#8a5cff"/>
+  <rect x="12" y="06" width="2" height="1" fill="#8a5cff"/>
+  <rect x="11" y="07" width="2" height="1" fill="#8a5cff"/>
+  <rect x="10" y="08" width="2" height="1" fill="#8a5cff"/>
+  <rect x="9" y="09" width="2" height="1" fill="#8a5cff"/>
+  <rect x="8" y="10" width="2" height="1" fill="#8a5cff"/>
+  <rect x="7" y="11" width="2" height="1" fill="#8a5cff"/>
+  <rect x="6" y="12" width="2" height="1" fill="#8a5cff"/>
+  <rect x="6" y="13" width="1" height="1" fill="#8a5cff"/>
+</svg>
