@@ -1,119 +1,76 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About | JSON Validator</title>
   <meta name="description" content="About the JSON Validator website and contact information." />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009003829347784" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+    <style>
 
-  <style>
-    :root{
-      --bg:#0b1020; --panel:#121a33; --panel-2:#0f1630;
-      --text:#e9eefc; --muted:#b7c3ff; --border:rgba(255,255,255,.12);
-      --shadow:0 18px 50px rgba(0,0,0,.35); --radius:16px;
-      --sans:system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    }
-    *{box-sizing:border-box;}
-    body{
-      margin:0; min-height:100vh; font-family:var(--sans); color:var(--text);
-      background:radial-gradient(1200px 500px at 20% 10%, rgba(109,83,255,.22), transparent 60%), var(--bg);
-    }
     a{color:#00d0ff;text-decoration:none;}
     a:hover{text-decoration:underline;}
 
-    .topbar{
-      position:sticky;top:0;z-index:10;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 16px;background:rgba(11,16,32,.7);
-      border-bottom:1px solid var(--border);backdrop-filter:blur(10px);
-    }
-    .menuBtn{
-      width:42px;height:42px;border-radius:12px;
-      border:1px solid var(--border);background:rgba(255,255,255,.04);
-      color:var(--text);cursor:pointer;
-    }
-
-    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;}
-    .overlay.open{opacity:1;pointer-events:auto;}
-
-    .sidebar{
-      position:fixed;top:0;left:0;height:100%;width:280px;
-      background:linear-gradient(180deg, rgba(18,26,51,.98), rgba(15,22,48,.98));
-      border-right:1px solid var(--border);padding:14px;
-      transform:translateX(-105%);transition:.25s;z-index:20;
-    }
-    .sidebar.open{transform:translateX(0);}
-    .nav a{
-      display:block;padding:10px 12px;margin-bottom:8px;
-      border-radius:12px;border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.03);color:var(--text);font-weight:600;
-    }
-    .nav a[aria-current="page"]{
-      background:rgba(0,208,255,.12);border-color:rgba(0,208,255,.4);
-    }
 
     .wrap{max-width:900px;margin:0 auto;padding:26px 16px;}
     h1{font-size:32px;margin-bottom:12px;}
+    h2{margin: 0px;}
     p{color:var(--muted);line-height:1.7;}
-    .card{
-      margin-top:24px;padding:18px;border-radius:var(--radius);
-      border:1px solid var(--border);background:rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
-    }
+
   </style>
 </head>
 
 <body>
-<div id="overlay" class="overlay"></div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>JSON Validator</h1>
+        <small>Tools & guides</small>
+      </div>
 
-<aside id="sidebar" class="sidebar">
-  <nav class="nav">
-    <a href="index.html">🏠 Home</a>
-    <a href="what-is-json.html">📘 What is JSON?</a>
-    <a href="about.html" aria-current="page">ℹ️ About</a>
-    <a href="privacy-policy.html">🔐 Privacy Policy</a>
-  </nav>
-</aside>
+      <nav class="nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="what-is-json.html">📘 What is JSON?</a>
+        <a href="common-json-errors.html">⚠️ Common JSON Errors</a>
+        <a href="json-best-practices.html">✅ Best Practices</a>
+        <a href="about.html" aria-current="page">ℹ️ About</a>
+        <a href="privacy-policy.html">🔐 Privacy Policy</a>
+      </nav>
 
-<div class="topbar">
-  <button id="openSidebar" class="menuBtn">☰</button>
-  <strong>JSON Validator</strong>
-  <span></span>
-</div>
+      <div class="sidebarNote">
+        Tip: All processing is local in your browser.
+      </div>
+    </aside>
 
-<div class="wrap">
-  <h1>About This Website</h1>
+    <div class="wrap">
+      <h1>About This Website</h1>
 
-  <p>
-    <strong>JSON Validator</strong> is a free online tool designed to help developers,
-    students, and data professionals validate, format, and minify JSON files
-    directly in their browser.
-  </p>
+      <p>
+        <strong>JSON Validator</strong> is a free online tool designed to help developers,
+        students, and data professionals validate, format, and minify JSON files
+        directly in their browser.
+      </p>
 
-  <p>
-    The main goal of this website is to provide a simple, fast, and privacy-friendly
-    utility without requiring account creation or server-side processing.
-  </p>
+      <p>
+        The main goal of this website is to provide a simple, fast, and privacy-friendly
+        utility without requiring account creation or server-side processing.
+      </p>
 
-  <div class="card">
-    <h2>Contact</h2>
-    <p>
-      If you have questions, suggestions, or feedback, feel free to contact:
-    </p>
-    <p>
-      📧 <strong>devigrs96@gmail.com</strong>
-    </p>
-  </div>
-</div>
+      <div class="card">
+        <h2>Contact</h2>
+        <p>
+          If you have questions, suggestions, or feedback, feel free to contact:
+        </p>
+        <p>
+          📧 <strong>devigrs96@gmail.com</strong>
+        </p>
+      </div>
+    </div>
 
-<script>
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("overlay");
-  document.getElementById("openSidebar").onclick = ()=>{
-    sidebar.classList.add("open"); overlay.classList.add("open");
-  };
-  overlay.onclick = ()=>{ sidebar.classList.remove("open"); overlay.classList.remove("open"); };
-</script>
+
 </body>
+
 </html>

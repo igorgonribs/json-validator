@@ -1,61 +1,47 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JSON Validator — Free & Secure (Local)</title>
-  <meta name="description" content="Validate, format and minify JSON directly in your browser. Your data never leaves your device." />
+  <meta name="description"
+    content="Validate, format and minify JSON directly in your browser. Your data never leaves your device." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009003829347784" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <!-- Sidebar + overlay -->
-  <div id="overlay" class="overlay" aria-hidden="true"></div>
-
-  <aside id="sidebar" class="sidebar" aria-label="Site menu" aria-hidden="true">
-    <div class="sidebarHeader">
-      <strong>Menu</strong>
-      <button id="closeSidebar" class="closeBtn" type="button" aria-label="Close menu">✕</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>JSON Validator</h1>
+      <small>Tools & guides</small>
     </div>
 
-  <nav class="nav">
-    <a href="index.html" aria-current="page">🏠 Home</a>
-    <a href="what-is-json.html">📘 What is JSON?</a>
-    <a href="about.html">ℹ️ About</a>
-    <a href="privacy-policy.html">🔐 Privacy Policy</a>
-  </nav>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">🏠 Home</a>
+      <a href="what-is-json.html">📘 What is JSON?</a>
+      <a href="common-json-errors.html">⚠️ Common JSON Errors</a>
+      <a href="json-best-practices.html">✅ Best Practices</a>
+      <a href="about.html">ℹ️ About</a>
+      <a href="privacy-policy.html">🔐 Privacy Policy</a>
+    </nav>
 
     <div class="sidebarNote">
-      Shortcuts: <b>Ctrl/⌘ + Enter</b> validate • <b>Ctrl/⌘ + B</b> format • <b>Ctrl/⌘ + M</b> minify
+      Tip: All processing is local in your browser.
     </div>
   </aside>
-
-  <!-- Top bar -->
-  <div class="topbar" role="banner">
-    <button id="openSidebar" class="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
-      ☰
-    </button>
-
-    <div class="brand">
-      <div>
-        <h1>JSON Validator</h1>
-        <small>Validate • Format • Minify (Local)</small>
-      </div>
-    </div>
-
-    <div class="pill" aria-label="Local processing">
-      <span class="dot" aria-hidden="true"></span>
-      Local processing
-    </div>
-  </div>
-
   <div class="wrap">
     <p class="subtitle">
-      Validate, format and minify JSON <strong>directly in your browser</strong>. Your data is <strong>never sent</strong> to a server.
+      Validate, format and minify JSON <strong>directly in your browser</strong>. Your data is <strong>never
+        sent</strong> to a server.
     </p>
 
-    <main class="card" role="region" aria-label="Editor and tools">
+    <main class="card" role="region" aria-label="Editor and tools" style="padding:0px">
       <div class="toolbar">
         <div class="btns">
           <button class="action primary" id="btnValidate" type="button">Validate</button>
@@ -72,14 +58,8 @@
         </div>
       </div>
 
-      <textarea
-        id="jsonInput"
-        class="editor"
-        spellcheck="false"
-        autocomplete="off"
-        autocapitalize="off"
-        autocorrect="off"
-        placeholder='Paste your JSON here. Example: {"name":"John Snow","ok":true}'
+      <textarea id="jsonInput" class="editor" spellcheck="false" autocomplete="off" autocapitalize="off"
+        autocorrect="off" placeholder='Paste your JSON here. Example: {"name":"John Snow","ok":true}'
         aria-label="JSON input"></textarea>
 
       <div class="status" aria-live="polite" aria-atomic="true">
@@ -95,42 +75,61 @@
           Shortcuts: <b>Ctrl/⌘ + Enter</b> validate • <b>Ctrl/⌘ + B</b> format • <b>Ctrl/⌘ + M</b> minify.
         </div>
       </div>
+
+      
     </main>
+    <br>
+    <hr>
+
+    <section style="margin-top:40px;">
+        <h2>What is JSON Validation?</h2>
+        <p>
+          JSON validation ensures that your JSON data follows the correct syntax rules
+          defined by the JSON specification. Invalid JSON can cause APIs, applications,
+          and data pipelines to fail.
+        </p>
+        <p>
+          Our JSON Validator helps developers quickly detect syntax errors such as:
+        </p>
+        <ul>
+          <li>Missing commas</li>
+          <li>Incorrect quotation marks</li>
+          <li>Trailing commas</li>
+          <li>Unclosed brackets or braces</li>
+        </ul>
+      </section>
+
+    <hr>
+
+      <section style="margin-top:30px;">
+        <h2>How to Use the JSON Validator</h2>
+        <ol>
+          <li>Paste your JSON into the editor.</li>
+          <li>Click <strong>Validate</strong> to check for errors.</li>
+          <li>Use <strong>Format</strong> to pretty-print your JSON.</li>
+          <li>Use <strong>Minify</strong> to remove unnecessary whitespace.</li>
+        </ol>
+      </section>
+
+    <hr>
+
+      <section style="margin-top:30px;">
+        <h2>Why Use an Online JSON Validator?</h2>
+        <p>
+          Validating JSON before sending it to production systems prevents bugs and
+          unexpected failures. A reliable JSON validation tool helps ensure that
+          your data is correctly structured and compliant with standards.
+        </p>
+        <p>
+          This tool runs entirely in your browser, meaning your data never leaves
+          your device, ensuring privacy and security.
+        </p>
+      </section>
 
   </div>
 
   <script>
     const el = (id) => document.getElementById(id);
-
-    // Sidebar elements
-    const sidebar = el("sidebar");
-    const overlay = el("overlay");
-    const openSidebarBtn = el("openSidebar");
-    const closeSidebarBtn = el("closeSidebar");
-
-    function openSidebar(){
-      sidebar.classList.add("open");
-      overlay.classList.add("open");
-      sidebar.setAttribute("aria-hidden","false");
-      overlay.setAttribute("aria-hidden","false");
-      openSidebarBtn.setAttribute("aria-expanded","true");
-    }
-
-    function closeSidebar(){
-      sidebar.classList.remove("open");
-      overlay.classList.remove("open");
-      sidebar.setAttribute("aria-hidden","true");
-      overlay.setAttribute("aria-hidden","true");
-      openSidebarBtn.setAttribute("aria-expanded","false");
-    }
-
-    openSidebarBtn.addEventListener("click", openSidebar);
-    closeSidebarBtn.addEventListener("click", closeSidebar);
-    overlay.addEventListener("click", closeSidebar);
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSidebar();
-    });
 
     // Validator elements
     const input = el("jsonInput");
@@ -328,4 +327,5 @@
     updateStats();
   </script>
 </body>
+
 </html>

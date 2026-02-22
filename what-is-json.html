@@ -2,49 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>What is JSON? | Simple Explanation</title>
   <meta name="description" content="Learn what JSON is, why it is so popular, and how to use it with clear examples." />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009003829347784" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Sidebar -->
-  <div id="overlay" class="overlay"></div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebarHeader">
-      <strong>Menu</strong>
-      <button id="closeSidebar" class="closeBtn">✕</button>
-    </div>
-
-  <nav class="nav">
-    <a href="index.html">🏠 Home</a>
-    <a href="what-is-json.html" aria-current="page">📘 What is JSON?</a>
-    <a href="about.html">ℹ️ About</a>
-    <a href="privacy-policy.html">🔐 Privacy Policy</a>
-  </nav>
-  </aside>
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <button id="openSidebar" class="menuBtn">☰</button>
+<div class="layout">
+  <aside class="sidebar">
     <div class="brand">
       <h1>JSON Validator</h1>
-      <small>Learn • Validate • Format</small>
+      <small>Tools & guides</small>
     </div>
-    <div class="pill">
-      <span class="dot"></span>
-      Local content
-    </div>
-  </div>
 
+    <nav class="nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="what-is-json.html" aria-current="page">📘 What is JSON?</a>
+      <a href="common-json-errors.html">⚠️ Common JSON Errors</a>
+      <a href="json-best-practices.html">✅ Best Practices</a>
+      <a href="about.html">ℹ️ About</a>
+      <a href="privacy-policy.html">🔐 Privacy Policy</a>
+    </nav>
+
+    <div class="sidebarNote">
+      Tip: All processing is local in your browser.
+    </div>
+  </aside>
   <!-- Content -->
   <div class="wrap">
     <h1>What is JSON?</h1>
     <p><strong>JSON (JavaScript Object Notation)</strong> is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate.</p>
+
+    <hr>
 
     <h2>Why is JSON so popular?</h2>
     <ul>
@@ -54,12 +46,16 @@
       <li>Ideal for APIs and web services</li>
     </ul>
 
+    <hr>
+
     <h2>JSON basic structure</h2>
     <p>JSON is built on two main structures:</p>
     <ul>
       <li><strong>Objects</strong> — key/value pairs</li>
       <li><strong>Arrays</strong> — ordered lists of values</li>
     </ul>
+
+    <hr>
 
     <h2>Example of JSON</h2>
     <pre>{
@@ -72,6 +68,8 @@
   "tools": ["json validator", "formatter"],
   "active": true
 }</pre>
+
+    <hr>
 
     <h2>Common JSON errors</h2>
     <ul>
@@ -88,26 +86,5 @@
     </div>
   </div>
 
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-
-    document.getElementById("openSidebar").onclick = () => {
-      sidebar.classList.add("open");
-      overlay.classList.add("open");
-    };
-
-    document.getElementById("closeSidebar").onclick = close;
-    overlay.onclick = close;
-
-    function close(){
-      sidebar.classList.remove("open");
-      overlay.classList.remove("open");
-    }
-
-    document.addEventListener("keydown", e=>{
-      if(e.key==="Escape") close();
-    });
-  </script>
 </body>
 </html>

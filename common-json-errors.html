@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Common JSON Errors Explained (With Examples)</title>
+  <meta name="description"
+    content="Learn the most common JSON errors, why they happen, and how to fix them. Includes real examples and solutions." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>JSON Validator</h1>
+      <small>Tools & guides</small>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="what-is-json.html">📘 What is JSON?</a>
+      <a href="common-json-errors.html" aria-current="page">⚠️ Common JSON Errors</a>
+      <a href="json-best-practices.html">✅ Best Practices</a>
+      <a href="about.html">ℹ️ About</a>
+      <a href="privacy-policy.html">🔐 Privacy Policy</a>
+    </nav>
+
+    <div class="sidebarNote">
+      Tip: All processing is local in your browser.
+    </div>
+  </aside>
+  <div class="wrap">
+
+    <h1>Common JSON Errors Explained (With Examples)</h1>
+
+    <p>
+      JSON is one of the most widely used data formats in modern web development.
+      However, even small syntax mistakes can cause a <strong>JSON parse error</strong>
+      or an <strong>invalid JSON format</strong> message.
+    </p>
+
+    <p>
+      This guide explains the most common JSON errors, why they happen,
+      and how to fix them quickly.
+    </p>
+
+    <hr>
+
+    <h2>1. Missing Commas Between Properties</h2>
+
+    <p>JSON requires commas between key-value pairs inside objects.</p>
+
+    <h3>❌ Incorrect</h3>
+    <pre>{
+  "name": "John"
+  "age": 30
+}</pre>
+
+    <h3>✅ Correct</h3>
+    <pre>{
+  "name": "John",
+  "age": 30
+}</pre>
+
+    <p>
+      Forgetting a comma is one of the most frequent JSON syntax errors.
+    </p>
+
+    <hr>
+
+    <h2>2. Trailing Commas</h2>
+
+    <p>
+      Unlike JavaScript objects, JSON does not allow trailing commas.
+    </p>
+
+    <h3>❌ Incorrect</h3>
+    <pre>{
+  "name": "John",
+  "age": 30,
+}</pre>
+
+    <h3>✅ Correct</h3>
+    <pre>{
+  "name": "John",
+  "age": 30
+}</pre>
+
+    <p>
+      Trailing commas often cause an “Unexpected token }” error.
+    </p>
+
+    <hr>
+
+    <h2>3. Using Single Quotes Instead of Double Quotes</h2>
+
+    <p>
+      JSON requires double quotation marks for both keys and string values.
+    </p>
+
+    <h3>❌ Incorrect</h3>
+    <pre>{
+  'name': 'John'
+}</pre>
+
+    <h3>✅ Correct</h3>
+    <pre>{
+  "name": "John"
+}</pre>
+
+    <p>
+      Single quotes are valid in JavaScript, but not in JSON.
+    </p>
+
+    <hr>
+
+    <h2>4. Unquoted Keys</h2>
+
+    <h3>❌ Incorrect</h3>
+    <pre>{
+  name: "John"
+}</pre>
+
+    <h3>✅ Correct</h3>
+    <pre>{
+  "name": "John"
+}</pre>
+
+    <p>
+      All keys must be strings enclosed in double quotes.
+    </p>
+
+    <hr>
+
+    <h2>5. Invalid Data Types</h2>
+
+    <p>
+      JSON supports only these data types:
+    </p>
+
+    <ul>
+      <li>String</li>
+      <li>Number</li>
+      <li>Boolean</li>
+      <li>Object</li>
+      <li>Array</li>
+      <li>null</li>
+    </ul>
+
+    <h3>❌ Incorrect</h3>
+    <pre>{
+  "value": NaN
+}</pre>
+
+    <p>
+      Values such as <code>NaN</code>, <code>Infinity</code>, and <code>undefined</code>
+      are not valid in JSON.
+    </p>
+
+    <hr>
+
+    <h2>6. Unexpected Token Errors</h2>
+
+    <p>
+      If you see an error like:
+    </p>
+
+    <pre>Unexpected token } in JSON at position 45</pre>
+
+    <p>
+      This usually means:
+    </p>
+
+    <ul>
+      <li>Missing comma</li>
+      <li>Extra comma</li>
+      <li>Unclosed bracket</li>
+      <li>Invalid quotation mark</li>
+    </ul>
+
+    <p>
+      Check the exact character position mentioned in the error message.
+    </p>
+
+    <hr>
+
+    <h2>7. Unclosed Brackets or Braces</h2>
+
+    <h3>❌ Incorrect</h3>
+    <pre>{
+  "user": {
+    "name": "John"
+}</pre>
+
+    <h3>✅ Correct</h3>
+    <pre>{
+  "user": {
+    "name": "John"
+  }
+}</pre>
+
+    <p>
+      Every opening <code>{</code> must have a closing <code>}</code>,
+      and every <code>[</code> must have a closing <code>]</code>.
+    </p>
+
+    <hr>
+
+    <h2>How to Debug JSON Quickly</h2>
+
+    <p>
+      Here are simple steps to fix JSON parse errors:
+    </p>
+
+    <ul>
+      <li>Format the JSON to visualize structure</li>
+      <li>Look for missing commas</li>
+      <li>Check quotation marks</li>
+      <li>Validate before sending to APIs</li>
+    </ul>
+
+    <div class="cta">
+      👉 You can use our <a href="index.html">JSON Validator</a>
+      to instantly detect syntax errors and fix invalid JSON format issues.
+    </div>
+
+  </div>
+
+</body>
+
+
+</html>
